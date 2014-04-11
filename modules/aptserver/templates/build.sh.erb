@@ -1,0 +1,19 @@
+#!/bin/bash
+cd /mnt/apt/pool/precise
+
+wget https://apt.puppetlabs.com/pool/precise/main/p/puppet/puppet-common_3.4.3-1puppetlabs1_all.deb
+wget https://apt.puppetlabs.com/pool/precise/main/p/puppet/puppet_3.4.3-1puppetlabs1_all.deb
+wget https://apt.puppetlabs.com/pool/precise/main/h/hiera/hiera_1.3.2-1puppetlabs1_all.deb
+wget https://apt.puppetlabs.com/pool/precise/main/f/facter/facter_2.0.1-1puppetlabs1_amd64.deb
+wget https://apt.puppetlabs.com/pool/precise/main/f/facter/facter_2.0.1-1puppetlabs1_i386.deb
+wget https://apt.puppetlabs.com/pool/precise/dependencies/r/ruby-rgen/ruby-rgen_0.6.5-1puppetlabs1_all.deb
+
+cd /mnt/apt
+
+apt-ftparchive packages pool/precise > dists/precise/main/binary-all/Packages
+apt-ftparchive packages pool/precise > dists/precise/main/binary-amd64/Packages
+apt-ftparchive packages pool/precise > dists/precise/main/binary-i386/Packages
+
+apt-ftparchive release /mnt/apt/dists/precise > /mnt/apt/dists/precise/Release
+
+gpg --output /mnt/apt/dists/precise/Release.gpg -ba /mnt/apt/dists/precise/Release
