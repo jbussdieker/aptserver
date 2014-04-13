@@ -1,0 +1,15 @@
+base
+	nopasswd sudo for ubuntu /etc/sudoers.d/ubuntu
+	ssh keys from repo
+puppet
+	puppet apt /etc/apt/sources.list.d/puppetlabs.list
+		deb http://apt.puppetlabs.com precise main
+		deb http://apt.puppetlabs.com precise dependencies
+	apt-get install puppet=3.4.3-1puppetlabs1
+
+puppetmaster
+
+	puppet apt /etc/apt/sources.list.d/puppetlabs.list
+		deb http://apt.puppetlabs.com precise main
+		deb http://apt.puppetlabs.com precise dependencies
+	apt-get install puppetmaster=3.4.3-1puppetlabs1

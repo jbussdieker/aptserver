@@ -1,0 +1,4 @@
+#!/bin/bash
+ARCH="$1"
+shift
+lxc-start-ephemeral -o ubuntu-precise-$ARCH-base1 -u ubuntu -S id_rsa -- "$@"
